@@ -16,7 +16,7 @@ class Apple(Fruit):
         Apple.col += 1
         self.name = name
 
-    def __str__(self):      #возвращает строку (в данном случае строку name)
+    def __str__(self):      #возвращает строку (в данном случае строку
         return self.name
 
    # def __repr__(self):
