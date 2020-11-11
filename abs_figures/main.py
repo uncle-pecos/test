@@ -43,7 +43,12 @@ elif corner == 4:
           size1 = int(input())
           print('Введите ширину прямоугольника')
           size2 = int(input())
-          pryamougolnik = Rectangle('pryamougolnik', size1, size2)
-          print ('Площадь фигуры равна ' + str(pryamougolnik.sq(size1, size2)))
+          if size1 == size2:
+            print('Это квадрат бл*ть')
+            kvadrat = Square('kvadrat', size1)
+            print ('Площадь фигуры равна ' + str(kvadrat.sq(size1)))
+          else:
+            pryamougolnik = Rectangle('pryamougolnik', size1, size2)
+            print ('Площадь фигуры равна ' + str(pryamougolnik.sq(size1, size2)))
 else: 
   print('Ну алло, я ж просил от 0 до 4')
