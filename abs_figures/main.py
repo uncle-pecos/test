@@ -7,7 +7,7 @@ print('Введите количество углов фигуры (от 0 до 
 corner = int(input())
 if corner == 0:
       print('Введите радиус круга')
-      size = int(input())
+      size = int(input()) 
       krug = Circle('krug', size)
       print ('Площадь фигуры равна ' + str(krug.sq(size)))
 elif corner == 3:
@@ -50,5 +50,7 @@ elif corner == 4:
           else:
             pryamougolnik = Rectangle('pryamougolnik', size1, size2)
             print ('Площадь фигуры равна ' + str(pryamougolnik.sq(size1, size2)))
+elif corner == 1 or corner ==2:
+  print('Такой фигуры быть не может')
 else: 
   print('Ну алло, я ж просил от 0 до 4')
