@@ -3,19 +3,33 @@ import os, fnmatch
 
 def xml_parse(xml_file, tag):
     result = {}
-    settings = xml_file.findall(tag)
-    for i in settings:                            #закидываем инфу из тегов в массив
-        for j in range(1,36):  
-            try:                                  #парсим 35 тегов    
-              temp = settings[0][j].text.strip()  #закидваем значение, удаляя пробелы
-              name = settings[0][j].tag
-              result[name] = temp                 #добавляем "тег = значение" в словарь
+    results = xml_file.findall(tag)
+    j = -1
+    t = True
+    for i in results:                          
+        while t == True:  
+            try:
+                j += 1                                    #парсим 35 тегов    
+                temp = i[j].text.strip()            #закидваем значение, удаляя пробелы
+                name = i[j].tag              
+                result[name] = temp                 #добавляем "тег = значение" в словарь
             except:
                 AttributeError
                 FileNotFoundError
-                pass
+                try:                                #если вдруг в теге есть аттрибуты, то добавляем их
+                    j += 1                                      
+                    temp = i[j].attrib            
+                    name = i[j].tag              
+                    result[name] = temp             #добавляем "тег = аттрибут" в словарь    
+                except:
+                    AttributeError
+                    FileNotFoundError
+                    t = False
+                    pass
+                
+
     for i in result:
-        print(i, ' = ', result[i])              #выводим всё, что распарсили
+        print(i, '=', result[i])              #выводим всё, что распарсили
     print('Файл пропарсен')
 
 def get_map_name(file):                            #вытаскиваем название карты из имени файла
