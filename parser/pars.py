@@ -14,13 +14,13 @@ def xml_parse(xml_file):
                 j += 1                                      
                 temp = i[j].text.strip()            #закидваем значение, удаляя пробелы
                 #name = i[j].tag                    #берем имя каждого тега на всякий случай
-                result.append(temp)                 #добавляем значение в список
+                result.append(temp)                 #ДОБАВЛЯЕМ КАЖДОЕ ЗНАЧЕНИЕ В СПИСОК result[]
             except IndexError:
                 t = False
                 pass
                 
     #for i in result:
-        print(result)              #выводим всё, что распарсили
+        print(result)              #выводим всё, что распарсили (А КОНКРЕТНЕЕ СПИСОК СО ВСЕМИ ЗНАЧЕНИЯМИ ПО ПОРЯДКУ)
     print('Файл пропарсен')
 
 def get_map_name(file):                            #вытаскиваем название карты из имени файла
