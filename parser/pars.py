@@ -24,23 +24,13 @@ def xml_parse(xml_file):
     print('Файл пропарсен')
 
 def get_map_name(file):                            #вытаскиваем название карты из имени файла
-    map_name = ''
-    index = file.index('_wotreplay')
-    temp = file[index-1]
-    while not temp.isdigit():                                       
-        temp = file[index-1] 
-        index -= 1                                
-        map_name += temp
-    while temp.isdigit():
-        temp = file[index-1]
-        index -= 1
-        map_name += temp        
-    map_name = map_name[::-1]
-    if index <= 0:                                 #если в названии файла нет названия карты, то выводим --- 
-        map_name = '---'
-    else:        
-        map_name = map_name[1:]                    #если все норм, то разворачиваем строку с названием карты, т.к. парсили с конца 
-    return map_name
+    index = file.index('.wotreplay')
+    temp = file[0:index]
+    return temp
+
+def get_stand_name(folder):
+    stand_name = folder[0:-19]
+    return stand_name
 
 def main_parsing(path_root):
     files = []                                      #список файлов с полным путем
@@ -64,6 +54,10 @@ def main_parsing(path_root):
                     print('Добавлен файл для парсинга ' + dir + '\\' + entry)    
                     files.append(new_path + '\\' + entry)           #создаем список файлов с полным путем
                     file_names.append(entry)                        #создаем отдельно список названий файлов
+                    get_table_name = get_stand_name(dir) + get_map_name(entry)         #СОЗДАЕМ TABLE_NAME
+                    print('Название таблицы: ' + get_table_name)            
+    
+
             if files == []:                                         
                 print('Файлов в папке', dir, 'не найдено')
     
@@ -71,7 +65,6 @@ def main_parsing(path_root):
                 try:
                     xml_file = ET.parse(i)
                     print('Парсим файл', i)                    
-                    print('Название карты: ' + get_map_name(i))     #выводим название карты для каждого файла
                     xml_parse(xml_file)
                     count_f += 1
                     
@@ -88,6 +81,7 @@ def main_parsing(path_root):
     print("за %s seconds" % (time.time() - start_time))
 
 
+comment = ''                                      #КОММЕНТ ДЛЯ АРТЕМА  
 start_time = time.time()                          #засекаем время
 path = "C:\\testttttt"                            #задаем корневаю папку (тут будет инфа от GUI)
 pattern_for_file = '*.btl'                        #задаем расширение файлов, которые будем парсить
