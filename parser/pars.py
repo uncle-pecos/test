@@ -33,7 +33,10 @@ def get_stand_name(folder):
     return stand_name
 
 def main_parsing():
+    print('введите')
     path_root = input()
+    build_number = input()
+    comment = input()
     files = []                                      #список файлов с полным путем
     file_names = []                                 #список названий файлов                                  
     list_of_folders = os.listdir(path_root)         #список имен папок 
@@ -82,9 +85,9 @@ def main_parsing():
     print("за %s seconds" % (time.time() - start_time))
 
 
-comment = ''                                      #КОММЕНТ ДЛЯ АРТЕМА  
+#comment = ''                                      #КОММЕНТ ДЛЯ АРТЕМА  
 start_time = time.time()                          #засекаем время
-path = "C:\\testttttt"                            #задаем корневаю папку (тут будет инфа от GUI)
+#path = "C:\\testttttt"                            #задаем корневаю папку (тут будет инфа от GUI)
 pattern_for_file = '*.btl'                        #задаем расширение файлов, которые будем парсить
 main_parsing()
 
