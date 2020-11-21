@@ -32,7 +32,8 @@ def get_stand_name(folder):
     stand_name = folder[0:-19]
     return stand_name
 
-def main_parsing(path_root):
+def main_parsing():
+    path_root = input()
     files = []                                      #список файлов с полным путем
     file_names = []                                 #список названий файлов                                  
     list_of_folders = os.listdir(path_root)         #список имен папок 
@@ -85,7 +86,7 @@ comment = ''                                      #КОММЕНТ ДЛЯ АРТ�
 start_time = time.time()                          #засекаем время
 path = "C:\\testttttt"                            #задаем корневаю папку (тут будет инфа от GUI)
 pattern_for_file = '*.btl'                        #задаем расширение файлов, которые будем парсить
-main_parsing(path)
+main_parsing()
 
 
 
